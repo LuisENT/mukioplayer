@@ -19,6 +19,7 @@ from google.appengine.ext import db
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import users
+#from google.appengine.aoi import service 
 
 from models.article import Article
 from models.video import Video
@@ -30,7 +31,7 @@ from common.base import BaseRequestHandler,_404
 from common.tools import loginRequired,MukioTools
 
 _DEBUG = True
-PAGESIZE = 14
+PAGESIZE = 54
 
 #以下正文
 
