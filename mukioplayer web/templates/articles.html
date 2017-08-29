@@ -1,31 +1,36 @@
-{% extends "main.html" %}
-{% block content %}
-{% if title %}<h2>{{ title }}</h2>{% endif %}
-<ul>
-{% for a in arts %}
-<li class='{% cycle wlist,blist,blist,wlist %}'>
-<h3 class='headline'><a href='/videos/{{ a.keyname }}/'>{{ a.title|escape }}</a></h3>
-{% ifequal user a.author %}{% if edit %}<a href='/addvideo/{{ a.keyname }}/' class='addvideolink'>编辑视频</a>  
-<a href='/delete/article/{{ a.keyname }}/' class='deletelink'>删除主题!</a>{% endif %}{% endifequal %}
-{% if a.author %}
-<span class='author'>{% if not title or iscls %}<a href='/userlist/{{ a.author.email }}/#'>{{ a.author.nickname }}</a>{% else %}{{ a.author.nickname }}{% endif %}</span>{% endif %}
-<span class='date'>{{ a.postdate|date:"Y-m-d H:i:s" }}</span>
-<span class='classify'>{{ a.tagname }}</span>
-<div class='review'>{{ a.abs|escape }}</div>
-</li>
-{% endfor %}
-<div class='clear'></div>
-</ul>
-{% if iscls %}
-	{% if prev %}<a href='/item/{{ cls }}/{{ prev }}/#'>前一页</a>{% endif %}
-	{% if next %}<a href='/item/{{ cls }}/{{ next }}/#'>后一页</a>{% endif %}
-{% else %}
-	{% if author %}
-		{% if prev %}<a href='/userlist/{{ author.email }}/{{ prev }}/#'>前一页</a>{% endif %}
-		{% if next %}<a href='/userlist/{{ author.email }}/{{ next }}/#'>后一页</a>{% endif %}
-	{% else %}
-		{% if prev %}<a href='/page/{{ prev }}/#'>前一页</a>{% endif %}
-		{% if next %}<a href='/page/{{ next }}/#'>后一页</a>{% endif %}
-	{% endif %}
-{% endif %}
-{% endblock %}
+<block cond="$oDocument_srl()->get_content">
+	<block cond="$oDocument_srl()->get_title">			
+    <div class="content_head_infomation" flex_id="content_head">
+      <h2>{$oDocument_srl->getTitle}</h2>
+      <h3>{$oDocument_srl->extra_varid(sub_title)}</h3>
+    </div>
+    <div class="content_main_video">
+      <img src="blob:{$content_srl_context_img()}" class="main_video_content_img" flex_ind="video_thum" content_type="png/images"> 
+      <video src="blob:{$content_srl_context()}" class="main_video_content" flex_id="video" content_type="mp4/video">
+    </div>
+    <div class="video_comment_layer">
+      <div class="comment_layer_content">
+          <div class="test_content_layer">
+             Comment Test
+        </div>
+      </div>
+     </div>
+     <div class="comment_list">
+       <div class="comment_list_layer">
+          <div class="comment">
+            <div class="content">Hello Wolrd!</div>
+            <div class="content_time">11:11</div>
+            <div class="content_layer">Writer : LuisK</div>
+            <div class="content_layer-2"><a href="{$url}/channel/{$oCommentWriter->member_srl}">Channel</a>
+            </div>
+         </div>
+       </div>
+       <div class="content_user_comment">
+          <div class="content_comment">
+            {$oDocument_srl->getContent()}
+         </div>
+       </div>
+       
+       
+         
+  </block>
