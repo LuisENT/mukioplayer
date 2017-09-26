@@ -21,8 +21,8 @@ function load()
 </head>
 <body onload='load()'>
 <div id='content'>
-{{ chatstr }}
-{% include "postchat.html" %}
-</div>
+	<li loop="$doc->oChatComment() == true">{$doc->oChatComment->getContent}</li>
+
+	</div>
 </body>
 </html>
