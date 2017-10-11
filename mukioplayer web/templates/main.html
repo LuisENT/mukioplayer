@@ -1,58 +1,44 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>{% if title %}
-{{ title }}
-{% else %}
-主题列表
-{% endif %}
- - Mikio</title>
-<link href='/main.css' type='text/css' rel='stylesheet' title='' />
-</head>
-<body>
-<div id='logo'><a href='/#'><img src='/logo.png' /></a></div>
-<div id='navigator'>
-<ul>
-<li><a href='/#'>首页</a></li>
-{% for i in items %}
-<li class='splitter'>|</li>
-{% if iscls %}
-	{% ifequal cls forloop.counter0 %}
-	<li>{{ i }}</li>
-	{% else %}
-	<li><a href='/item/{{ forloop.counter0 }}/#'>{{ i }}</a></li>
-	{% endifequal %}
-{% else %}
-	<li><a href='/item/{{ forloop.counter0 }}/#'>{{ i }}</a></li>
-{% endif %}
-{% endfor %}
-</ul>
-<div id='login_logout'>
-{% if user %}
-您好 {% if not edit %}<a href='/userlist/{{ user.email }}/#'>{{ user.nickname }}</a>{% else %}{{ user.nickname }}{% endif %}  <a href='/post.php#'>发布主题</a>  <a href='{{log_in_out_url}}'>注销</a>
- {% if admin %}
- <a href='/admin#'>管理</a>
- {% endif %}
-{% else %}
-您尚未登录 <a href='{{log_in_out_url}}'>登录</a>
-{% endif %}
-</div>
-<div class='clear'></div>
-</div>
-<div id='content'>
-{% block content %}{% endblock %}
-<div class='clear'></div>
-</div>
-<script type="text/javascript"> 
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-15371998-2");
-pageTracker._trackPageview();
-} catch(err) {}</script>
-
-</body>
-</html>
+<html>
+	<head>
+		<title> {$oTitle->getTitle(mid)}</title>
+		<!--@meta-->
+		<!--@end-->
+		
+		{$oGetLayoutHeaderMETA}
+		
+	</head>
+	
+	<body>
+	<div class="main_content">
+		<div class="main_header">
+			<div class="main_head_wrap">
+				<div class="main_head_content">
+					<div class="main_head_menu">
+						<li>HeadMenu1</li>
+						<li>HeadMenu1</li>
+						<li>HeadMenu1</li>
+						<li>HeadMenu1</li>
+					</div>
+				<div class="main_logo_img">
+					<a href="/"><img src="{$layout_logo}"></a>
+				</div>
+				<div class="main_menu_list">
+					<li>MenuList</li>
+					<li>MenuList</li>
+					<li>MenuList</li>
+					<li>MenuList</li>
+					<li>MenuList</li>
+				</div>
+				<div class="my_page">
+					<div class="my_page_modal">
+						<!--@(logged_info=NULL)-->
+						<p>It seems not logged.. plz Login!</p>
+						<!--@end-->
+					</div>
+				</div>
+			</div>
+					
+		
+		
+		
+	
