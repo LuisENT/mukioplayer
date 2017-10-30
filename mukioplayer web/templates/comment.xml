@@ -1,3 +1,5 @@
+<!--@if(version=="1") -->
+
 <?xml version="1.0" encoding="utf-8"?>
 <information>{% for c in comments %}
   <data>
@@ -8,3 +10,18 @@
     <id>{{ c.keyid }}</id>
   </data>{% endfor %}
 </information>
+
+<!--@else -->
+
+<?xml version="1.0" encoding="utf-8"/>
+  <h2> {$comments_list}개의 코멘트가 있습니다.</h2>
+
+  <div class="comment_list_content">  
+    <div class="comment_list_content_type">
+    {$get->videosrcTime()} 에 작성한 코멘트
+     </div>
+    <div class="comment_head">
+      <div class="comment_profile">
+        <a href="{$member_srl->getProfileURL()}">
+        <img src="{$get->membersrl->getProfileimg()}" width="20%" height="20%"></a>
+      </div>
